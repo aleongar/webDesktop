@@ -48,7 +48,7 @@ export function WindowComponent({name, icon, size, id, initialPos}){
     return (
         <div onMouseLeave={() => setFocus(false)} onMouseDown={() => setFocus(true)} className="window" id={id}  style={{width: size.x, height: 'fit-content', zIndex: Number(isFocus) * 20 + 10, left: `${position.x}px`, top: `${position.y}px`}}>
              <div onMouseDown={startDragging}>
-                 <TitleBar  name={name} icon={icon}/>
+                 <TitleBar  id={id} name={name} icon={icon}/>
              </div>
              <div style={{backgroundColor: 'white'}}>hola ejejejejejejejejejej</div>
         </div>

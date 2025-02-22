@@ -1,7 +1,7 @@
 import './TitleBar.css'
-export function TitleBar({name, icon, onMouseDown}){
+export function TitleBar({name, icon, onMouseDown, id}){
     function windowClose(e){
-        e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+       document.getElementById(id).remove()
     }
     return (
         <div onMouseDown={onmousedown} className="window-title-container">
