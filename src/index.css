@@ -1,0 +1,10 @@
+@import-normalize; /* Esto viene de postcss-normalize */
+
+body{
+  background-color: #222;
+  color: #ddd;
+  font-family: system-ui;
+  margin: 0;
+  cursor: default;
+  user-select: none;
+}

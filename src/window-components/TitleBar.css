@@ -1,0 +1,25 @@
+.window-title-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #09f;
+}
+
+.window-title-control{
+    display: flex;
+    flex-direction: row;
+}
+
+.window-title-button:hover{
+    background-color: rgb(1, 82, 136);
+    transition: background-color 50ms linear;
+}
+
+.window-close{
+    background-color: red;
+}
+
+.window-close:hover{
+    background-color: #6d0000;
+    transition: background-color 50ms linear;
+}

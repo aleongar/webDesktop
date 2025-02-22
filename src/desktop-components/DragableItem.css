@@ -1,0 +1,18 @@
+.drag-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    max-width: 60px;
+    max-height: 80px;
+    min-width: 60px;
+    min-height: 80px;
+}
+
+.drag-container:hover{
+    border: #09f 1px solid;
+    background-color: #0099ff46;
+}
+
+.drag-container > img{
+    pointer-events: none;
+}
