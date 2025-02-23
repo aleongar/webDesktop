@@ -6,7 +6,7 @@ export function App(){
   const [nextId, setNextId] = useState(1)
   const [openedWindows, setOpenedWindows] = useState([
     {
-      id: `window${nextId}`,
+      id: `window${0}`,
       name: "Bloc de notas",
       icon: "https://www.systemuicons.com/images/icons/document_justified.svg",
       size: { x: 500, y: 100 },
@@ -25,6 +25,7 @@ export function App(){
     };
 
     setOpenedWindows((prevWindows) => [...prevWindows, newWindow]);
+    console.log(openedWindows);
   };
 
   const handleDoubleClick = (e) => {
@@ -39,11 +40,13 @@ export function App(){
         <DragableItem  onDoubleClick={handleDoubleClick} colorInvert name={'Bloc de Notas'} icon={'https://www.systemuicons.com/images/icons/document_justified.svg'}/>
         {openedWindows.map((window) => (
         <WindowComponent
+          key={window.id}
           id={window.id}
           name={window.name}
           icon={window.icon}
           size={window.size}
           initialPos={window.initialPos}
+          onClose={() => setOpenedWindows((prevWindows) => prevWindows.filter(item => item.id != window.id))}
         />
       ))}
     </DesktopEnviroment>
