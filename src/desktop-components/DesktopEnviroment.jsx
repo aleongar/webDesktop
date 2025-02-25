@@ -4,7 +4,7 @@ import { TaskBar } from './TaskBar'
 import { TaskItem } from './TaskItem'
 import React, { Children } from 'react';
 
-export function DesktopEnviroment({children}){
+export function DesktopEnviroment({children, openedWindows}){
     let universalCoordinates = {x: 0, y: 0}
 
     const mappedChildren = Children.map(children, (child) => {
@@ -22,7 +22,14 @@ export function DesktopEnviroment({children}){
         <div id="desktop">
             {mappedChildren}
             <TaskBar>
-                <TaskItem name='Bloc de notas' icon={'https://www.systemuicons.com/images/icons/document_justified.svg'}></TaskItem>
+                {openedWindows.map((window) => (
+                    <TaskItem
+                        key={window.id}
+                        id={window.id}
+                        name={window.name}
+                        icon={window.icon}
+                    />
+                ))}
             </TaskBar>
         </div>
     )

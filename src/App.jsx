@@ -35,7 +35,7 @@ export function App(){
   };
   
   return (
-    <DesktopEnviroment>
+    <DesktopEnviroment openedWindows={openedWindows}>
         <DragableItem colorInvert name={'Terminal'} icon={'https://www.systemuicons.com/images/icons/terminal.svg'}/>
         <DragableItem  onDoubleClick={handleDoubleClick} colorInvert name={'Bloc de Notas'} icon={'https://www.systemuicons.com/images/icons/document_justified.svg'}/>
         {openedWindows.map((window) => (
