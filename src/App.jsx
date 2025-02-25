@@ -16,22 +16,24 @@ export function App(){
 
   const openWindow = (name) => {
     setNextId(nextId+1)
+    if(name === null){
+      name = 'pene'
+    }
     const newWindow = {
       id: `window${nextId}`,
       name: name,
       icon: "https://www.systemuicons.com/images/icons/document_justified.svg", // Puedes cambiar el ícono si es necesario
       size: { x: 500, y: 100 },
       initialPos: { x: 10, y: 10 }
-    };
+    }
 
-    setOpenedWindows((prevWindows) => [...prevWindows, newWindow]);
-    console.log(openedWindows);
+    setOpenedWindows((prevWindows) => [...prevWindows, newWindow])
   };
 
   const handleDoubleClick = (e) => {
-    e.preventDefault();
-    const programName = e.target.getAttribute('name');
-    openWindow(programName);
+    e.preventDefault()
+    const programName = e.currentTarget.getAttribute('name')
+    openWindow(programName)
   };
   
   return (

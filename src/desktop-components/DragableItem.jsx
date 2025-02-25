@@ -49,6 +49,7 @@ export function DragableItem({ name, icon, colorInvert, initialPos, onDoubleClic
             style={{ left: `${position.x}px`, top: `${position.y}px`, position: "absolute"}}
             className="drag-container"
             onDoubleClick={onDoubleClick}
+            name={name}
         >
             <img unselectable="on" style={{filter: `invert(${Number(colorInvert)})`}} onSelect={() => false} src={icon} alt={filterName} />
             <span>{filterName}</span>
