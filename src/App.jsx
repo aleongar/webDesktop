@@ -2,13 +2,25 @@ import { useState } from "react"
 import { DesktopEnviroment } from "./desktop-components/DesktopEnviroment"
 import { DragableItem } from "./desktop-components/DragableItem"
 import { WindowComponent } from "./window-components/WindowComponent"
-export function App(){
+import { DragableItem as DragableItemObj } from "./models/DragableItem.js";
+export function App() {
   const [nextId, setNextId] = useState(1)
   const [openedWindows, setOpenedWindows] = useState([]);
 
+  const handleDoubleClick = (e) => {
+    e.preventDefault()
+    const programName = e.currentTarget.getAttribute('name')
+    openWindow(programName)
+  };
+
+  const [currentFiles, setCurrentFiles] = useState([
+    new DragableItemObj('Bloc de Notas', 'https://www.systemuicons.com/images/icons/document_justified.svg', handleDoubleClick)
+  ]);
+
+
   const openWindow = (name) => {
-    setNextId(nextId+1)
-    if(name === null){
+    setNextId(nextId + 1)
+    if (name === null) {
       name = 'Ventana desconocida'
     }
     const newWindow = {
@@ -22,17 +34,12 @@ export function App(){
     setOpenedWindows((prevWindows) => [...prevWindows, newWindow])
   };
 
-  const handleDoubleClick = (e) => {
-    e.preventDefault()
-    const programName = e.currentTarget.getAttribute('name')
-    openWindow(programName)
-  };
-  
   return (
     <DesktopEnviroment openedWindows={openedWindows}>
-        <DragableItem colorInvert name={'Terminal'} icon={'https://www.systemuicons.com/images/icons/terminal.svg'}/>
-        <DragableItem  onDoubleClick={handleDoubleClick} colorInvert name={'Bloc de Notas'} icon={'https://www.systemuicons.com/images/icons/document_justified.svg'}/>
-        {openedWindows.map((window) => (
+      {currentFiles.map((file) => (
+        <DragableItem key={file.id} dragItem={file} />
+      ))}
+      {openedWindows.map((window) => (
         <WindowComponent
           key={window.id}
           id={window.id}
@@ -46,4 +53,3 @@ export function App(){
     </DesktopEnviroment>
   )
 }
-  
