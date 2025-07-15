@@ -4,20 +4,12 @@ import { DragableItem } from "./desktop-components/DragableItem"
 import { WindowComponent } from "./window-components/WindowComponent"
 export function App(){
   const [nextId, setNextId] = useState(1)
-  const [openedWindows, setOpenedWindows] = useState([
-    {
-      id: `window${0}`,
-      name: "Bloc de notas",
-      icon: "https://www.systemuicons.com/images/icons/document_justified.svg",
-      size: { x: 500, y: 100 },
-      initialPos: { x: 10, y: 10 }
-    }
-  ]);
+  const [openedWindows, setOpenedWindows] = useState([]);
 
   const openWindow = (name) => {
     setNextId(nextId+1)
     if(name === null){
-      name = 'pene'
+      name = 'Ventana desconocida'
     }
     const newWindow = {
       id: `window${nextId}`,
